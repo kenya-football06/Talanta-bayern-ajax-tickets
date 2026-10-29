@@ -1,605 +1,197 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talanta Matchday | Bayern Munich vs Ajax - Ticket Enquiry</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-dark: #07090e;
-            --bg-card: #0f1423;
-            --bg-card-hover: #161d33;
-            --accent-red: #e11d48;
-            --accent-blue: #2563eb;
-            --accent-gold: #f59e0b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .brand-font {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: rgba(7, 9, 14, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(225, 29, 72, 0.3);
-        }
-
-        .logo-text h1 {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            background: linear-gradient(90deg, #fff, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-text span {
-            font-size: 0.75rem;
-            color: var(--accent-gold);
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .header-cta {
-            background: #25d366;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-        }
-
-        .header-cta:hover {
-            background: #22bf5b;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Banner Section */
-        .hero {
-            background:
-  linear-gradient(
-    180deg,
-    rgba(7, 9, 14, 0.35),
-    rgba(7, 9, 14, 0.85)
-  ),
-  url("matchday-hero.png") center/cover no-repeat;
-        }
-
-        .notice-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: var(--accent-gold);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .match-display {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .team-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            min-width: 140px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .team-card.bayern {
-            border-top: 4px solid var(--accent-red);
-        }
-
-        .team-card.ajax {
-            border-top: 4px solid var(--accent-blue);
-        }
-
-        .team-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-top: 5px;
-        }
-
-        .vs-badge {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
-        }
-
-        .event-meta {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .event-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .event-meta-item i {
-            color: var(--accent-gold);
-        }
-
-        /* Main Content Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 5%;
-        }
-
-        section {
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Ticket Pricing Grid */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: var(--bg-card-hover);
-        }
-
-        .price-card.vip {
-            border: 1px solid var(--accent-gold);
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, var(--bg-card) 100%);
-        }
-
-        .vip-badge {
-            position: absolute;
-            top: -12px;
-            right: 24px;
-            background: var(--accent-gold);
-            color: #07090e;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .price-header h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-amount {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #fff;
-            margin: 1rem 0;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .price-amount span {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .price-features {
-            list-style: none;
-            margin: 1.5rem 0 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .price-features li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .price-features li i {
-            color: #22c55e;
-            font-size: 0.85rem;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: #fff;
-            width: 100%;
-            padding: 0.9rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            background: #22bf5b;
-            transform: scale(1.02);
-        }
-
-        /* Important Information Box */
-        .info-box {
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-box h3 {
-            color: #60a5fa;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-        }
-
-        .info-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .info-box ul {
-            list-style: disc;
-            margin-left: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .info-box li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* FAQ Accordion */
-        .faq-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .faq-item h4 {
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .faq-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #040508;
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 5%;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        footer .footer-brand {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        footer p {
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.6;
-        }
-
-        .disclaimer {
-            font-size: 0.75rem;
-            color: #64748b;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .match-display {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .vs-badge {
-                margin: 0.5rem 0;
-            }
-            .event-meta {
-                flex-direction: column;
-                gap: 0.75rem;
-                align-items: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talanta Matchday | Bayern Munich vs Ajax</title>
+<meta name="theme-color" content="#080b13">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080b13; --panel:#121a29; --text:#f5f7fb;
+  --muted:#b7c0d0; --red:#e11d48; --gold:#f4c66a;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter,Arial,sans-serif; line-height:1.6;
+}
+a { color:inherit; }
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:15px; flex-wrap:wrap; padding:16px 5%;
+  background:#080b13; border-bottom:1px solid #283044;
+}
+.brand { font-weight:800; letter-spacing:2px; font-size:1.3rem; }
+.brand span { color:var(--gold); }
+nav { display:flex; gap:16px; flex-wrap:wrap; }
+nav a { color:var(--muted); text-decoration:none; font-size:.9rem; }
+.hero {
+  min-height:510px; padding:75px 5% 65px;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center;
+  background:
+    linear-gradient(180deg,rgba(7,9,14,.35),rgba(7,9,14,.65) 55%,#080b13 100%),
+    url("matchday-hero.png") center 35%/cover no-repeat;
+  border-bottom:1px solid #283044;
+}
+.eyebrow {
+  padding:7px 13px; border:1px solid var(--gold);
+  border-radius:30px; color:var(--gold);
+  background:#080b13b8; font-size:.75rem;
+  font-weight:800; letter-spacing:1.5px;
+}
+h1,h2,h3 { font-family:"Barlow Condensed",Impact,sans-serif; line-height:1.1; }
+h1 { font-size:clamp(2.8rem,9vw,6rem); margin:22px 0 12px; }
+h1 span { color:var(--gold); }
+.hero p { max-width:650px; text-shadow:0 2px 8px #000; }
+.meta { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:16px 0 24px; }
+.chip { padding:10px 13px; background:#080b13d9; border:1px solid #ffffff35; border-radius:8px; }
+.actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+.btn {
+  display:inline-block; padding:12px 18px; border-radius:8px;
+  text-decoration:none; font-weight:800; background:var(--red);
+}
+.btn.secondary { background:#111827; border:1px solid #ffffff45; }
+section.content { max-width:1100px; margin:auto; padding:55px 5%; }
+.heading { text-align:center; margin-bottom:28px; }
+.heading h2 { font-size:clamp(2.2rem,6vw,3.5rem); margin-bottom:8px; }
+.heading p,.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.card {
+  background:var(--panel); border:1px solid #ffffff20;
+  border-radius:14px; padding:24px;
+}
+.card h3 { font-size:1.8rem; margin:0 0 8px; }
+.bayern { border-top:3px solid var(--red); }
+.ajax { border-top:3px solid white; }
+.prices { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.price { color:var(--gold); font-size:2rem; font-weight:800; margin:12px 0; }
+.card p { color:var(--muted); }
+.contact {
+  margin:0 5% 50px; padding:32px 20px; text-align:center;
+  background:linear-gradient(120deg,#e11d482b,#2f65d92b);
+  border:1px solid #ffffff20; border-radius:16px;
+}
+.contact h2 { font-size:2.5rem; }
+details { padding:17px 0; border-bottom:1px solid #ffffff20; }
+summary { cursor:pointer; font-weight:700; }
+details p { color:var(--muted); }
+footer {
+  text-align:center; padding:25px 5%; color:var(--muted);
+  border-top:1px solid #ffffff20; font-size:.82rem;
+}
+footer p { max-width:850px; margin:10px auto; }
+@media(max-width:650px) {
+  header { align-items:flex-start; flex-direction:column; }
+  .grid,.prices { grid-template-columns:1fr; }
+  .hero { min-height:450px; padding:55px 5%; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo-area">
-            <div class="logo-icon">
-                <i class="fa-solid fa-futbol"></i>
-            </div>
-            <div class="logo-text">
-                <h1>TALANTA MATCHDAY</h1>
-                <span>Official Enquiry Portal</span>
-            </div>
-        </div>
-        <a href="https://wa.me/254762103221?text=Hello%20Talanta%20Matchday,%20I%20would%20like%20to%20make%20a%20general%20enquiry%20regarding%20the%20Bayern%20Munich%20vs%20Ajax%20match." class="header-cta" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-    </header>
+<header>
+  <div class="brand">TALANTA <span>MATCHDAY</span></div>
+  <nav>
+    <a href="#match">Match</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="notice-badge">
-            <i class="fa-solid fa-triangle-exclamation"></i> Event Enquiry & Registration Page
-        </div>
+<main>
+<section class="hero" id="match">
+  <div class="eyebrow">FOOTBALL • PASSION • NAIROBI</div>
+  <h1>BAYERN MUNICH <span>VS</span> AJAX</h1>
+  <p>Two famous football clubs. One unforgettable matchday atmosphere. Enquire about ticket options and availability.</p>
+  <div class="meta">
+    <div class="chip">📅 <strong>5 January 2027</strong></div>
+    <div class="chip">📍 <strong>Venue: Talanta City Stadium, Nairobi</strong></div>
+  </div>
+  <div class="actions">
+    <a class="btn" href="https://wa.me/254762103221?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Bayern%20vs%20Ajax%20tickets" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+    <a class="btn secondary" href="#tickets">View ticket information</a>
+  </div>
+</section>
 
-        <div class="match-display">
-            <div class="team-card bayern">
-                <i class="fa-solid fa-shield-halved" style="color: var(--accent-red); font-size: 1.8rem; margin-bottom: 8px;"></i>
-                <h3>Bayern Munich</h3>
-            </div>
-            <div class="vs-badge">VS</div>
-            <div class="team-card ajax">
-                <i class="fa-solid fa-shield-halved" style="color: var(--accent-blue); font-size: 1.8rem; margin-bottom: 8px;"></i>
-                <h3>Ajax</h3>
-            </div>
-        </div>
+<section class="content">
+  <div class="heading">
+    <h2>THE MATCHUP</h2>
+    <p>European football excitement in Nairobi.</p>
+  </div>
+  <div class="grid">
+    <article class="card bayern">
+      <h3>FC Bayern Munich</h3>
+      <p>German football giants with a proud history and passionate supporters.</p>
+    </article>
+    <article class="card ajax">
+      <h3>AFC Ajax</h3>
+      <p>Amsterdam's celebrated club, known for technical football and developing talent.</p>
+    </article>
+  </div>
+</section>
 
-        <div class="event-meta">
-            <div class="event-meta-item">
-                <i class="fa-regular fa-calendar-days"></i> Proposed Date: <strong>5 January 2027</strong>
-            </div>
-            <div class="event-meta-item">
-                <i class="fa-solid fa-location-dot"></i> Proposed Venue: <strong>Talanta City Stadium, Nairobi</strong>
-            </div>
-        </div>
-    </section>
+<section class="content" id="tickets">
+  <div class="heading">
+    <h2>TICKET INFORMATION</h2>
+    <p>Contact us to enquire about availability and purchase arrangements.</p>
+  </div>
+  <div class="grid prices">
+    <article class="card">
+      <h3>Standard</h3>
+      <div class="price">KSh 2,000</div>
+      <p>General seating enquiry.</p>
+      <a class="btn secondary" href="https://wa.me/254762103221?text=I%20am%20enquiring%20about%20Standard%20tickets" target="_blank" rel="noopener">Ask about Standard</a>
+    </article>
+    <article class="card" style="border-color:#f4c66a">
+      <h3>Premium</h3>
+      <div class="price">KSh 5,000</div>
+      <p>Premium seating enquiry.</p>
+      <a class="btn" href="https://wa.me/254762103221?text=I%20am%20enquiring%20about%20Premium%20tickets" target="_blank" rel="noopener">Ask about Premium</a>
+    </article>
+    <article class="card">
+      <h3>VIP</h3>
+      <div class="price">KSh 8,000</div>
+      <p>VIP seating enquiry.</p>
+      <a class="btn secondary" href="https://wa.me/254762103221?text=I%20am%20enquiring%20about%20VIP%20tickets" target="_blank" rel="noopener">Ask about VIP</a>
+    </article>
+  </div>
+  <p class="muted" style="text-align:center;font-size:.85rem;margin-top:20px">
+    Confirm final prices, ticket availability and seating before making any payment.
+  </p>
+</section>
 
-    <!-- Main Container -->
-    <div class="container">
+<section class="contact" id="contact">
+  <h2>NEED HELP WITH TICKETS?</h2>
+  <p>Message us to ask about ticket categories and availability.</p>
+  <a class="btn" href="https://wa.me/254762103221?text=Hello%2C%20I%27d%20like%20ticket%20information" target="_blank" rel="noopener">WhatsApp: 0762 103 221</a>
+</section>
 
-        <!-- Ticket Pricing Section -->
-        <section id="tickets">
-            <div class="section-title">
-                <h2>Ticket Categories & Proposed Rates</h2>
-                <p>Select your preferred ticket category below to enquire directly via WhatsApp.</p>
-            </div>
+<section class="content" id="faq">
+  <div class="heading"><h2>FREQUENTLY ASKED QUESTIONS</h2></div>
+  <details>
+    <summary>How do I enquire about tickets?</summary>
+    <p>Tap a WhatsApp button and send your question. Confirm availability and the final price before paying.</p>
+  </details>
+  <details>
+    <summary>Can I pay on this website?</summary>
+    <p>No. This website provides information and enquiries; it does not collect payments or issue tickets directly.</p>
+  </details>
+  <details>
+    <summary>Are ticket prices final?</summary>
+    <p>The displayed prices are indicative and should be confirmed before payment.</p>
+  </details>
+</section>
+</main>
 
-            <div class="pricing-grid">
-                <!-- Standard -->
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Standard Admission</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">General seating area with great stadium atmosphere.</p>
-                    </div>
-                    <div class="price-amount">KSh 2,000 <span>/ ticket</span></div>
-                    <ul class="price-features">
-                        <li><i class="fa-solid fa-check"></i> Standard stadium entry</li>
-                        <li><i class="fa-solid fa-check"></i> General stands access</li>
-                        <li><i class="fa-solid fa-check"></i> Matchday program access</li>
-                    </ul>
-                    <a href="https://wa.me/254762103221?text=Hello%20Talanta%20Matchday,%20I%20would%20like%20to%20enquire%20about%20Standard%20tickets%20(KSh%202,000)%20for%20Bayern%20Munich%20vs%20Ajax%20on%205%20January%202027.%20Please%20confirm%20event%20status,%20ticket%20availability,%20total%20cost,%20and%20authorized%20payment%20process." class="btn-whatsapp" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Enquire Standard (KSh 2,000)
-                    </a>
-                </div>
-
-                <!-- Premium -->
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Premium Tier</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Enhanced view and better proximity to the pitch action.</p>
-                    </div>
-                    <div class="price-amount">KSh 5,000 <span>/ ticket</span></div>
-                    <ul class="price-features">
-                        <li><i class="fa-solid fa-check"></i> Premium mid-tier seating</li>
-                        <li><i class="fa-solid fa-check"></i> Faster dedicated gate access</li>
-                        <li><i class="fa-solid fa-check"></i> Complimentary refreshment voucher</li>
-                    </ul>
-                    <a href="https://wa.me/254762103221?text=Hello%20Talanta%20Matchday,%20I%20would%20like%20to%20enquire%20about%20Premium%20tickets%20(KSh%205,000)%20for%20Bayern%20Munich%20vs%20Ajax%20on%205%20January%202027.%20Please%20confirm%20event%20status,%20ticket%20availability,%20total%20cost,%20and%20authorized%20payment%20process." class="btn-whatsapp" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Enquire Premium (KSh 5,000)
-                    </a>
-                </div>
-
-                <!-- VIP -->
-                <div class="price-card vip">
-                    <div class="vip-badge">VIP Access</div>
-                    <div class="price-header">
-                        <h3>VIP Lounge</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Exclusive hospitality, premium seating, and VIP parking access.</p>
-                    </div>
-                    <div class="price-amount">KSh 8,000 <span>/ ticket</span></div>
-                    <ul class="price-features">
-                        <li><i class="fa-solid fa-check"></i> VIP grandstand seating</li>
-                        <li><i class="fa-solid fa-check"></i> VIP lounge hospitality access</li>
-                        <li><i class="fa-solid fa-check"></i> Priority reserved parking</li>
-                    </ul>
-                    <a href="https://wa.me/254762103221?text=Hello%20Talanta%20Matchday,%20I%20would%20like%20to%20enquire%20about%20VIP%20tickets%20(KSh%208,000)%20for%20Bayern%20Munich%20vs%20Ajax%20on%205%20January%202027.%20Please%20confirm%20event%20status,%20ticket%20availability,%20total%20cost,%20and%20authorized%20payment%20process." class="btn-whatsapp" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Enquire VIP (KSh 8,000)
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Important Notice Box -->
-        <div class="info-box">
-            <h3><i class="fa-solid fa-circle-info"></i> Important Information & Booking Guidelines</h3>
-            <p>Please read the following guidelines carefully before making any inquiries or financial commitments:</p>
-            <ul>
-                <li><strong>Enquiry Status Only:</strong> All match details, proposed dates, venues, and ticket availability are currently subject to official confirmation.</li>
-                <li><strong>Direct Verification:</strong> Always verify event validity and authorized payment procedures directly through our official WhatsApp contact (<strong>0762103221</strong>).</li>
-                <li><strong>No Automatic Issuance:</strong> Clicking WhatsApp buttons opens a direct enquiry chat. Tickets are never automatically issued, and payments should only be made after receiving official verification and instructions from authorized representatives.</li>
-            </ul>
-        </div>
-
-        <!-- FAQ Section -->
-        <section id="faq">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about making enquiries.</p>
-            </div>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>How do I make a ticket enquiry?</h4>
-                    <p>Click any of the ticket category buttons above to open a pre-filled chat on WhatsApp with our team at 0762103221. You can also use the general chat button at the top.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Are these tickets guaranteed immediately?</h4>
-                    <p>No. Because this is an independent enquiry page, all ticket availability is subject to official event confirmation and allocation rules.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What is the official payment process?</h4>
-                    <p>Real payment processing requires legitimate merchant setup. Never send money to unverified numbers. Always confirm the secure payment procedure directly via WhatsApp with our official line before sending any funds.</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-brand">TALANTA MATCHDAY</div>
-        <p>Your premier independent portal for matchday enquiries, fixtures, and ticketing information in Nairobi, Kenya.</p>
-        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp Support: <strong>0762103221</strong></p>
-        
-        <div class="disclaimer">
-            <strong>Disclaimer:</strong> Talanta Matchday is an independent matchday enquiry and information service. This page is not officially endorsed by, affiliated with, or sponsored by FC Bayern Munich, AFC Ajax, Talanta City Stadium, or the Government of Kenya. All trademarks, club names, and logos belong to their respective copyright holders and are used solely for descriptive identification purposes.
-        </div>
-    </footer>
-
+<footer>
+  <p><strong>Talanta Matchday</strong> · Nairobi, Kenya</p>
+  <p>This is an independent ticket-enquiry page and is not affiliated with or endorsed by FC Bayern Munich, AFC Ajax, the venue, or any government body. Confirm event details, seller authority, ticket availability and payment instructions independently before paying.</p>
+  <p>© 2026 Talanta Matchday.</p>
+</footer>
 </body>
-              </html>
+</html>
